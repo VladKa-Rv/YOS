@@ -11,5 +11,9 @@ namespace YOS.Application.Repository.Article
     public interface IArticleRepository : IRepositoryBase<Domain.Domain.Article>
     {
         Task<Domain.Domain.Article> Create(Domain.Domain.Article entity, IFormFile avatar);
+        Task<Domain.Domain.Article> Edit(Domain.Domain.Article entity, IFormFile avatar);
+        Task<string> Delete(int id);
+
+
     }
 }

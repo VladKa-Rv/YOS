@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+using YOS.Domain.Domain;
 
-namespace YOS.Domain.Domain
+namespace YOS.Application.AutoMapper.Models
 {
-    public class Article
+    public class ArticleModel
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -14,8 +15,8 @@ namespace YOS.Domain.Domain
         public string? Category { get; set; }
         public string? ProductCountry { get; set; }
         public int Price { get; set; }
-        public string? ShortDescription { get; set; }
         public int Count { get; set; } = 1;
-        public List<ArticlePhoto>?  ArticlePhotos { get; set; }
+        public string? ShortDescription { get; set; }
+        public List<ArticlePhotoModel>? ArticlePhotos { get; set; }
     }
 }

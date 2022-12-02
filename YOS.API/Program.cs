@@ -1,5 +1,7 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using YOS.Application.AutoMapper.Profiles;
 using YOS.Application.ModelValidation;
 using YOS.Application.Repository.Article;
 using YOS.Domain.Context;
@@ -16,6 +18,8 @@ namespace YOS.API
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddAutoMapper(typeof(Program));
+            builder.Services.AddAutoMapper(typeof(ArticleProfile).GetTypeInfo().Assembly);
             builder.Services.AddScoped<IValidator<Article>, ArticleAbstractValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<ArticleAbstractValidator>();
             builder.Services.AddDbContext<AppDbContext>(options =>
@@ -26,7 +30,10 @@ namespace YOS.API
                 options.AddPolicy(name: "DefaultCors",
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:3000");
+                        policy
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .WithOrigins("http://localhost:3000");
                     });
             });
 

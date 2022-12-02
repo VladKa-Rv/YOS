@@ -11,8 +11,8 @@ using YOS.Domain.Context;
 namespace YOS.Domain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221028065727_initv3")]
-    partial class initv3
+    [Migration("20221119182053_articleCount")]
+    partial class articleCount
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace YOS.Domain.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -42,6 +45,12 @@ namespace YOS.Domain.Migrations
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
+
+                    b.Property<string>("ProductCountry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShortDescription")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
